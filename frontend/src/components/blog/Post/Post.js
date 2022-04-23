@@ -12,7 +12,6 @@ function Post() {
 
     useEffect(() => {
         const url = base_url + "/posts/" + postSlug;
-        console.log("url: " + url);
         axios.get(url).then((response) => {
             setPost(response.data);
         });
@@ -31,6 +30,7 @@ function Post() {
                 <ReactMarkdown children={post.content}/>
             </div>
             <hr/>
+            <p className={styles.BlogFooter}>© Simon Gavris, {new Date().getFullYear()}</p>
         </div>
     );
 }

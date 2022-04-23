@@ -1,5 +1,5 @@
 import React from 'react';
-import {FaGithub, FaLinkedin, FaStackExchange} from 'react-icons/fa';
+import {FaGithub, FaLinkedin, FaStackExchange, FaEnvelope} from 'react-icons/fa';
 
 const Footer = () => (
     <footer className="text-center text-lg-start bg-light text-muted mt-auto">
@@ -8,6 +8,10 @@ const Footer = () => (
                 <span>Simon Gavris – Vienna, Austria</span>
             </div>
             <div>
+                <a href="mailto:simon.gavris@gmail.com" target="_blank" rel="noopener noreferrer"
+                   className="me-4 text-reset">
+                    <FaEnvelope/>
+                </a>
                 <a href="https://github.com/simongavris" target="_blank" rel="noopener noreferrer"
                    className="me-4 text-reset">
                     <FaGithub/>

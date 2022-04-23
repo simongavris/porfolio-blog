@@ -7,7 +7,7 @@ function Navigation() {
     const navBarOffcanvas = React.createRef();
     return (
         <div className="navigation">
-            <Navbar bg="transparent" expand="true" className="fixed-top">
+            <Navbar bg={(innerWidth < 700)?"light":"transparent"} expand="true" className="fixed-top">
                 <Container fluid>
                     <Navbar.Toggle aria-controls="offcanvasNavbar" />
                     <Navbar.Offcanvas placement="start" ref={navBarOffcanvas}>

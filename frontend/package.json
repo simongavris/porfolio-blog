@@ -9,7 +9,7 @@
   "scripts": {
     "start": "parcel index.html",
     "prebuild": "rm -rf dist",
-    "build": "parcel build index.html"
+    "build": "parcel build --no-cache index.html"
   },
   "keywords": [],
   "author": "Simon Gavris",

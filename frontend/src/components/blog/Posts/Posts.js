@@ -9,7 +9,6 @@ function Posts() {
 
     useEffect(() => {
         const url = process.env.REACT_APP_BACKEND_URL;
-        console.log("posts url: " + url);
         axios.get(url + '/posts').then((response) => {
             setPosts(response.data.posts);
         });
