@@ -1,0 +1,34 @@
+version: "3"
+networks:
+  int:
+  proxy:
+    external: true
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile
+    stop_signal: SIGINT
+    networks:
+      - int
+  frontend:
+    image: blog_minimum_frontend:latest
+    depends_on:
+      - backend
+    networks:
+      - int
+  nginx:
+    image: blog_minimum_nginx:latest
+    depends_on:
+      - backend
+      - frontend
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:blog.bblbrx.de
+      - traefik.docker.network=proxy
+      - traefik.port=80
+      - traefik.protocol=http
+    networks:
+      - proxy
+      - int
