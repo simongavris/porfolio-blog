@@ -1,4 +1,34 @@
-body {
-    color: black;
-    background-color: white;
+:root {
+    --main-color: #010139;
+    --main-bg-color: #fdfaf4;
 }
+
+body {
+    color: var(--main-color);
+    background-color: var(--main-bg-color);
+}
+.offcanvas {
+    background-color: var(--main-bg-color);
+}
+.navbar {
+    background-color: transparent;
+}
+.navbar-toggler,
+.navbar-toggler:focus,
+.navbar-toggler-icon:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: transparent !important;
+}
+
+
+@media (max-width: 700px) {
+    body {
+        padding-top: 60px;
+    }
+    .navbar {
+        background-color: var(--main-bg-color);
+    }
+}
+
+

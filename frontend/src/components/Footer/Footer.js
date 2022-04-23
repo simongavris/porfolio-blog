@@ -1,8 +1,9 @@
 import React from 'react';
+import * as styles from "./Footer.module.css"
 import {FaGithub, FaLinkedin, FaStackExchange, FaEnvelope} from 'react-icons/fa';
 
 const Footer = () => (
-    <footer className="text-center text-lg-start bg-light text-muted mt-auto">
+    <footer className={"text-center text-lg-start bg-light text-muted mt-auto " + styles.Footer}>
         <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
             <div className="me-5 d-none d-lg-block">
                 <span>Simon Gavris – Vienna, Austria</span>

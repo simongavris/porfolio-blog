@@ -1,25 +1,30 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { Link } from 'react-router-dom';
 import * as styles from './Navigation.module.css';
 import { NavLink } from "react-router-dom";
 import  {Offcanvas, Container, Navbar, NavDropdown, Nav} from "react-bootstrap";
 
+
 function Navigation() {
-    const navBarOffcanvas = React.createRef();
+    const [expanded, setExpanded] = useState(false);
     return (
         <div className="navigation">
-            <Navbar bg={(innerWidth < 700)?"light":"transparent"} expand="true" className="fixed-top">
+            <Navbar expanded={expanded} expand="true" className="fixed-top">
                 <Container fluid>
-                    <Navbar.Toggle aria-controls="offcanvasNavbar" />
-                    <Navbar.Offcanvas placement="start" ref={navBarOffcanvas}>
-                        <Offcanvas.Header closeButton/>
+                    <Navbar.Toggle aria-controls="offcanvasNavbar" onClick={() => setExpanded(expanded ? false : "expanded")}/>
+                    <Navbar.Offcanvas placement="start">
+                        <Offcanvas.Header closeButton onClick={() => setExpanded(false)}/>
                         <Offcanvas.Body>
                             <Nav className="justify-content-end flex-grow-1 pe-3">
-                                <NavLink to="/"
-                                         className={({ isActive }) => styles.NavLink + " " + (isActive ? styles.Active : "")}
-                                         onClick={console.log (navBarOffcanvas.current)}
-                                >Home</NavLink>
-                                <NavLink to="/contact" className={({ isActive }) => styles.NavLink + " " + (isActive ? styles.Active : "")}>Contact</NavLink>
-                                <NavLink to="/blog" className={({ isActive }) => styles.NavLink + " " + (isActive ? styles.Active : "")}>Blog</NavLink>
+                                <NavLink onClick={() => setExpanded(false)} to="/" className={({ isActive }) => styles.NavLink + " " + (isActive ? styles.Active : "")}>
+                                    Home
+                                </NavLink>
+                                <NavLink onClick={() => setExpanded(false)} to="/contact" className={({ isActive }) => styles.NavLink + " " + (isActive ? styles.Active : "")}>
+                                    Contact
+                                </NavLink>
+                                <NavLink onClick={() => setExpanded(false)} to="/blog" className={({ isActive }) => styles.NavLink + " " + (isActive ? styles.Active : "")}>
+                                    Blog
+                                </NavLink>
                             </Nav>
                         </Offcanvas.Body>
                     </Navbar.Offcanvas>

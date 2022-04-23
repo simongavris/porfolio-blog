@@ -1,11 +1,11 @@
 import React from 'react';
 import Container from "react-bootstrap/Container";
 import * as styles from "./Home.module.css"
-
+//justify-content-center + (innerWidth < 700)?" justify-content-center":""
 const Home = () => (
     <Container className="d-flex flex-column">
         <header className={"w-100 d-flex align-items-center " + styles.HomeHeader}>
-            <div className="align-middle">
+            <div className="align-middle " >
                 <h1>Simon Gavris</h1>
                 <h2>Blog, Portfolio, ...</h2>
             </div>
