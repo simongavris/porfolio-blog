@@ -1,4 +1,4 @@
-FROM node:12.18.1 as builder
+FROM node:14.18.2 as builder
 
 ENV NODE_ENV=production
 WORKDIR /app
