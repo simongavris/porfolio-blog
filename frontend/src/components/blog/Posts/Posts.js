@@ -8,7 +8,9 @@ function Posts() {
     const [posts, setPosts] = React.useState(null);
 
     useEffect(() => {
-        axios.get("http://127.0.0.1:5000/posts").then((response) => {
+        const url = process.env.REACT_APP_BACKEND_URL;
+        console.log("posts url: " + url);
+        axios.get(url + '/posts').then((response) => {
             setPosts(response.data.posts);
         });
     }, []);

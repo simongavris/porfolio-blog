@@ -2,11 +2,8 @@ from flask import Flask
 from flask import abort
 from flask_cors import CORS
 import os
-
 import re
-
-import json
-from flask import request
+from waitress import serve
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
@@ -43,4 +40,5 @@ def single_post(title):
 
 if __name__ == "__main__":
     update_db()
-    app.run()
+    #app.run()
+    serve(app, host='0.0.0.0', port=5000)

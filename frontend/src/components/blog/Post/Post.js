@@ -8,10 +8,11 @@ import axios from 'axios';
 function Post() {
     let { postSlug } = useParams();
     const [post, setPost] = React.useState(null);
-    console.log(postSlug)
+    const base_url = process.env.REACT_APP_BACKEND_URL;
 
     useEffect(() => {
-        const url = "http://127.0.0.1:5000/posts/" + postSlug
+        const url = base_url + "/posts/" + postSlug;
+        console.log("url: " + url);
         axios.get(url).then((response) => {
             setPost(response.data);
         });
