@@ -10,16 +10,19 @@ def read_files(files):
     for filename in os.listdir("resources"):
         post = {}
         with open(os.path.join("resources", filename), 'r') as f:
+            content = f.read()
             post["date"] = filename.split("_")[0]
-            post["content"] = f.read()
-        files.append(post)
+            post["title"] = content.split("\n")[0][2:]
+            post["teaser"] = content.partition('\n')[2]
+            post["content"] = content
+            files.append(post)
 
 @app.route("/posts")
-def hello():
+def server():
     files = []
-    result = {}
     read_files(files)
     files.sort(key=lambda x: x["date"], reverse=True)
+    result = {}
     result["posts"] = files
     return result
 
