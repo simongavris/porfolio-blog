@@ -3,16 +3,15 @@ import styles from './BlogPost.module.css';
 import ReactMarkdown from 'react-markdown';
 import Moment from "react-moment";
 
+
 const BlogPost = ({blogContent}) => (
+
     <div className={styles.BlogPost}>
         <div className={styles.BlogHeader}>
-            <Moment format
-                        ="DD.MM.YYYY">{blogContent.date}</Moment>
+            <Moment format="DD.MM.YYYY">{blogContent.date}</Moment>
         </div>
         <div className={styles.BlogContent}>
-            <ReactMarkdown>
-                {blogContent.contentMd}
-            </ReactMarkdown>
+            <ReactMarkdown children={blogContent.content}/>
         </div>
         <hr/>
     </div>

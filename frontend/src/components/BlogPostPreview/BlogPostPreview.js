@@ -17,7 +17,8 @@ const BlogPostPreview = () => (
               </Card.Text>
               <Button>Click</Button>
           </Card.Body>
-      </Card>  </div>
+      </Card>
+  </div>
 );
 
 BlogPostPreview.propTypes = {};
