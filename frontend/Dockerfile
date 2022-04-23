@@ -7,5 +7,4 @@ WORKDIR /usr/share/nginx/html
 COPY dist .
 
 RUN nginx -t
-
 CMD ["nginx", "-g", "daemon off;"]

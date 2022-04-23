@@ -25,12 +25,12 @@ def update_db():
     read_files(files)
     files.sort(key=lambda x: x["date"], reverse=True)
 
-@app.route("/posts")
+@app.route("/api/posts")
 def posts():
     result = {"posts": files}
     return result
 
-@app.route("/posts/<title>")
+@app.route("/api/posts/<title>")
 def single_post(title):
     print("looking for: " + title)
     for f in files:

@@ -1,4 +1,5 @@
 version: "3.9"
+
 services:
   backend:
     build:
@@ -6,11 +7,19 @@ services:
       dockerfile: ./Dockerfile
     ports:
       - "5000:5000"
+    stop_signal: SIGINT
   frontend:
     build:
       context: ./frontend
       dockerfile: ./Dockerfile
-    environment:
-      REACT_APP_BACKEND_URL: http://backend:5000
+    depends_on:
+      - backend
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: ./Dockerfile
+    depends_on:
+      - backend
+      - frontend
     ports:
       - "8080:80"
