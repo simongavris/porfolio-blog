@@ -1,10 +1,22 @@
-FROM nginx:1.21.6
+FROM node:12.18.1 as builder
+
+ENV NODE_ENV=production
+WORKDIR /app
+COPY ["package.json", "package-lock.json*", "./"]
+
+RUN npm install --production
+COPY . .
+
+RUN npm run build
+
+
+FROM nginx:1.21.6 as deploy
 
 COPY nginx.conf /etc/nginx/nginx.conf
 WORKDIR /usr/share/nginx/html
 
 # project artifacts
-COPY dist .
+COPY --from=builder /app/dist .
 
 RUN nginx -t
 CMD ["nginx", "-g", "daemon off;"]

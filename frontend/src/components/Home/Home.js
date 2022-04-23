@@ -7,7 +7,7 @@ const Home = () => (
         <header className={"w-100 d-flex align-items-center " + styles.HomeHeader}>
             <div className="align-middle">
                 <h1>Simon Gavris</h1>
-                <h2>>>> CLICK to Read Blog</h2>
+                <h2>Blog, Portfolio, ...</h2>
             </div>
         </header>
         <section>
