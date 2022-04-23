@@ -1,10 +1,17 @@
 from flask import Flask
+from flask import abort
 from flask_cors import CORS
 import os
+
+import re
+
 import json
+from flask import request
 
 app = Flask(__name__)
-CORS(app) #TODO
+CORS(app, resources={r"/*": {"origins": "*"}})
+
+files = []
 
 def read_files(files):
     for filename in os.listdir("resources"):
@@ -17,14 +24,23 @@ def read_files(files):
             post["content"] = content
             files.append(post)
 
-@app.route("/posts")
-def server():
-    files = []
+def update_db():
     read_files(files)
     files.sort(key=lambda x: x["date"], reverse=True)
-    result = {}
-    result["posts"] = files
+
+@app.route("/posts")
+def posts():
+    result = {"posts": files}
     return result
 
+@app.route("/posts/<title>")
+def single_post(title):
+    print("looking for: " + title)
+    for f in files:
+        if re.sub('[^A-Za-z0-9]+', '_', f['title']) == title:
+            return f
+    abort(404)
+
 if __name__ == "__main__":
+    update_db()
     app.run()

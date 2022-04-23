@@ -1,11 +1,10 @@
-.BlogHeader {
-    text-align: right;
-}
-.BlogPost {
+.Post {
     min-width: 70%;
     text-align: left;
 }
-
+.BlogHeader {
+    text-align: right;
+}
 pre code {
     font-family: monospace;
 }
