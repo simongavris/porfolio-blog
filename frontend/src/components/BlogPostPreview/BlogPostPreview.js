@@ -3,19 +3,20 @@ import styles from './BlogPostPreview.module.css';
 
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
+import Moment from "react-moment";
+import ReactMarkdown from "react-markdown";
 
 
-const BlogPostPreview = () => (
+const BlogPostPreview = ({blog}) => (
   <div className={styles.BlogPostPreview}>
       <Card style={{ width: '18rem' }}>
-          <Card.Img variant="top" src="holder.js/100px180" />
           <Card.Body>
-              <Card.Title>Card Title</Card.Title>
+              <Card.Title>{/(?<=#).*/m.exec(blog.content)}</Card.Title>
+              <Card.Subtitle><Moment format="DD.MM.YYYY">{blog.date}</Moment></Card.Subtitle>
               <Card.Text>
-                  Some quick example text to build on the card title and make up the bulk of
-                  the card's content.
+                  {String(/(\n)[\s\S]*/m.exec(blog.content)).substring(0, 200)+ "..."}
               </Card.Text>
-              <Button>Click</Button>
+              <Button>Read more</Button>
           </Card.Body>
       </Card>
   </div>

@@ -4,14 +4,14 @@ import ReactMarkdown from 'react-markdown';
 import Moment from "react-moment";
 
 
-const BlogPost = ({blogContent}) => (
+const BlogPost = ({blog}) => (
 
     <div className={styles.BlogPost}>
         <div className={styles.BlogHeader}>
-            <Moment format="DD.MM.YYYY">{blogContent.date}</Moment>
+            <Moment format="DD.MM.YYYY">{blog.date}</Moment>
         </div>
         <div className={styles.BlogContent}>
-            <ReactMarkdown children={blogContent.content}/>
+            <ReactMarkdown children={blog.content}/>
         </div>
         <hr/>
     </div>

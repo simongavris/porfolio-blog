@@ -3,8 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import BlogPost from "./components/BlogPost/BlogPost";
 import Container from "react-bootstrap/Container";
+import CardGroup from "react-bootstrap/CardGroup"
 import React from "react";
 import axios from 'axios';
+import BlogPostPreview from "./components/BlogPostPreview/BlogPostPreview";
 
 function App() {
 
@@ -27,9 +29,11 @@ function App() {
                 </div>
             </header>
             <section>
-                {posts.map((p) => (
-                    <BlogPost blogContent={p}/>
-                ))}
+                <CardGroup>
+                    {posts.map((p) => (
+                        <BlogPostPreview blog={p}/>
+                    ))}
+                </CardGroup>
             </section>
         </Container>
     );
